@@ -42,7 +42,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y musl-tools
-          musl-musl-gcc --version
+          musl-gcc --version
       
       # ==================== 安装 UPX (可选) ====================
       - name: Install UPX
@@ -207,8 +207,6 @@ jobs:
           FRONTEND_MD5=$(find "$OTA_TMP/www" -type f -exec md5sum {} \; | cut -d' ' -f1 | sort | md5sum | cut -d' ' -f1)
           echo "   MD5: $FRONTEND_MD5"
           
-          # 生成 meta.json
-          echo "📋 生成 meta.json..."
           # 生成 meta.json
           echo "📋 生成 meta.json..."
           cat > "$OTA_TMP/meta.json" << EOF
